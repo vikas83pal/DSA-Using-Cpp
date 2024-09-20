@@ -1,20 +1,19 @@
 #include<bits/stdc++.h>
 using namespace std;
-void binarySearch(int arr[],int n,int s){
-    int low = 0,high = n-1,mid = 0;
-    while(low<=high) { 
-        mid = low + (high - low) / 2;
-        if(s == arr[mid]){
-            cout << s << " is found at " << mid << endl;
-            return;
-        }
-        if(s < arr[mid]){
-            high =  mid - 1;
+int binarySearch(int arr[],int n,int ele){
+   int low = 0;
+   int high = n - 1;
+   
+    while(low <= high){
+        int mid = low + (high - low) /2;
+        if(ele == arr[mid]) return mid;
+        if(ele < arr[mid]) {
+            high = mid - 1;
         }else{
             low = mid + 1;
         }
     }
-    cout << s << " is not found"<< endl;
+    return -1;
 }
 int main(){
     int n;
@@ -30,6 +29,6 @@ int main(){
     cout << endl;
     int s;
     cin >> s;
-    binarySearch(arr,n,s);
+    cout << binarySearch(arr,n,s);
     return 0;
 }
